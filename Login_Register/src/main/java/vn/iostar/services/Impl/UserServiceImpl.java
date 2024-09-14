@@ -1,10 +1,12 @@
-package vn.iostar.DAO.Impl;
+package vn.iostar.services.Impl;
 
 import vn.iostar.DAO.UserDao;
-import vn.iostar.DAO.UserService;
+import vn.iostar.DAO.Impl.UserDaoImpl;
+import vn.iostar.services.UserService;
 import vn.iostar.model.User;
 
 public class UserServiceImpl implements UserService {
+	// lấy tất cả hàm trong tầng DAO
 	public UserDao userDao = new UserDaoImpl();
 
 	@Override
@@ -51,6 +53,15 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean checkExistPhone(String phone) {
 		return userDao.checkExistPhone(phone);
+	}
+	@Override
+	public boolean updatePassword(String username, String password) {
+		if (!userDao.checkExistUsername(username)) 
+		{
+	        return false;
+	    }
+	   	userDao.updatePassword(username, password);
+	    return true;
 	}
 }
 

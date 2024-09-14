@@ -28,9 +28,9 @@
 			
 
 			<label>Sđt</label><br />
-			<input type="text" name="phone" > <br />
+			<input type="text" name="phone" > <br /> <br />
 				
-			<input type="submit" value="register">
+			<input type="submit" value="Đăng kí">
 			</div>
 		</label>
 	</section>

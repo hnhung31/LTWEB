@@ -7,8 +7,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import vn.iostar.DAO.*;
-import vn.iostar.DAO.Impl.*;
+import vn.iostar.services.*;
+import vn.iostar.services.Impl.*;
 import java.io.IOException;
 
 
@@ -67,7 +67,7 @@ public class RegisterController extends HttpServlet {
 			//SendMail sm = new SendMail();
 			//sm.sendMail(email, "Shopping.iotstar.vn", "Welcome to Shopping. Please Loginto use service. Thanks !");
 			req.setAttribute("alert", alertMsg);
-			resp.sendRedirect(req.getContextPath() + "/login");
+			resp.sendRedirect(req.getContextPath() + "/login.jsp");
 		} 
 		else {
 			alertMsg = "System error!";

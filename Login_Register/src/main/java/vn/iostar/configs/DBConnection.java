@@ -40,10 +40,6 @@ public class DBConnection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-				
-			
-		
 			return conn;
 	}
 	public static void main(String[] args) {
