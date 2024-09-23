@@ -24,14 +24,14 @@ public class ResetPWController extends HttpServlet
 	            if (success) 
 	            {
 	                request.setAttribute("message", "Mật khẩu đã được cập nhật thành công.");
-	                request.getRequestDispatcher("/login.jsp").forward(request, response);	                
+	                request.getRequestDispatcher("/views/login.jsp").forward(request, response);	                
 	            } else {
 	                request.setAttribute("error", "Tài khoản không tồn tại.");
 	                request.getRequestDispatcher("/reset-password.jsp").forward(request, response);
 	            }
 	        } else {
 	            request.setAttribute("error", "Mật khẩu và xác nhận mật khẩu không khớp.");
-	            request.getRequestDispatcher("/reset-password.jsp").forward(request, response);
+	            request.getRequestDispatcher("views/reset-password.jsp").forward(request, response);
 	        }
 
 	    }

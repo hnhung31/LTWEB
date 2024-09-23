@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User get(String username) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByUserName(username);
 	}
 	@Override
 	public void insert(User user) {
@@ -62,6 +62,10 @@ public class UserServiceImpl implements UserService {
 	    }
 	   	userDao.updatePassword(username, password);
 	    return true;
+	}
+	@Override
+	public void updateProfile(String fullname, String phone, String images, String username) {
+		userDao.updateProfile(fullname, phone, images, username);
 	}
 }
 

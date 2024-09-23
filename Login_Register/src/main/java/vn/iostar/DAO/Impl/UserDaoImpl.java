@@ -139,6 +139,24 @@ public class UserDaoImpl implements UserDao {
 	    
 	    return updated;
 	}
+	@Override
+	public void updateProfile(String fullname, String phone, String avatar, String username ) {
+		
+		String query = "update [User] set fullname=?, phone=?, avatar=?  where username=?";
+		try {
+			conn = new DBConnection().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, fullname);
+			ps.setString(2, phone);
+			ps.setString(3, avatar);
+			ps.setString(4, username);
+			ps.executeQuery();
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }
 

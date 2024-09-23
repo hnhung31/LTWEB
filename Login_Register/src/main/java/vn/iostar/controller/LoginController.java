@@ -18,6 +18,7 @@ import vn.iostar.services.*;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
 		if (session != null && session.getAttribute("account") != null) {
@@ -36,7 +37,7 @@ public class LoginController extends HttpServlet {
 				}
 			}
 		}
-		req.getRequestDispatcher("login.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -57,7 +58,7 @@ public class LoginController extends HttpServlet {
 		if (username.isEmpty() || password.isEmpty()) {
 			alertMsg = "Tài khoản hoặc mật khẩu không được rỗng";
 			req.setAttribute("alert", alertMsg);
-			req.getRequestDispatcher("/login.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 			return;
 		}
 		UserService service = new UserServiceImpl();
@@ -72,19 +73,14 @@ public class LoginController extends HttpServlet {
 		} else {
 			alertMsg = "Tài khoản hoặc mật khẩu không đúng";
 			req.setAttribute("alert", alertMsg);
-			req.getRequestDispatcher("/login.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 		}
 	}
 
 	private void saveRememberMe(HttpServletResponse response, String username, String password){
-			Cookie cookie1 = new Cookie(Constant.COOKIE_REMEMBER, username);
-			Cookie cookie2 = new Cookie(Constant.COOKIE_REMEMBERP, password);
-			cookie1.setMaxAge(60);
-			cookie2.setMaxAge(60);
-			cookie1.setPath("/");
-			response.addCookie(cookie1);
-			cookie2.setPath("/");
-			response.addCookie(cookie2);
+		Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER, username);
+		cookie.setMaxAge(30 * 60);
+		response.addCookie(cookie);
 			
 	}
 }

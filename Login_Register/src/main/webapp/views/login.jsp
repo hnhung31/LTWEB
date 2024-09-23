@@ -1,64 +1,77 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ page import="jakarta.servlet.http.Cookie" %>
-<%@ page import="vn.iostar.utils.Constant" %>
-<%
-    // Đọc cookie và lấy giá trị username
-    Cookie[] cookies = request.getCookies();
-    String username = "";
-	String password ="";
-    if (cookies != null) {
-        for (Cookie cookie : cookies) {
-            if (Constant.COOKIE_REMEMBER.equals(cookie.getName())) {
-                username = cookie.getValue();
-            }
-            if (Constant.COOKIE_REMEMBERP.equals(cookie.getName())) {
-                password = cookie.getValue();
-                break;
-            }
-        }
-    }
-%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-6">
-				<form action="/Login_Register/login" method="post">
-					<h2 class="text-center mb-4">ĐĂNG NHẬP</h2>
-					<c:if test="${alert !=null}">
-						<h3 class="alert alert-danger text-center">${alert}</h3>
-					</c:if>
-					<div class="mb-3">
-						<label for="username" class="form-label">Tài khoản</label>
-						<div class="input-group">
-							<span class="input-group-text"><i class="fa fa-user"></i></span>
-							<input type="text" placeholder="Tài khoản" name="username" class="form-control" value="<%= username %>" required>
+
+<!-- BEGIN CONTENT -->
+<div class="col-md-9 col-sm-9">
+	<h1>Login</h1>
+	<div class="content-form-page">
+		<div class="row">
+			<c:if test="${alert != null}">
+				<h3 class="alert-alertdanger">${alert}</h3>
+			</c:if>
+			<div class="col-md-7 col-sm-7">
+				<form action="/Login_Register/login" method="post"
+					class="form-horizontal form-without-legend" role="form">
+					<div class="form-group">
+						<label for="username" class="col-lg-4 control-label">Username<span
+							class="require">*</span></label>
+						<div class="col-lg-8">
+							<input type="text" class="form-control" name="username"
+								id="username">
 						</div>
 					</div>
-					<div class="mb-3">
-						<label for="password" class="form-label">Mật khẩu</label>
-						<div class="input-group">
-							<span class="input-group-text"><i class="fa fa-lock"></i></span>
-							<input type="password" placeholder="Mật Khẩu" name="password" class="form-control" value="<%= password %>" required> <br>
+					<div class="form-group">
+						<label for="password" class="col-lg-4 control-label">Password
+							<span class="require">*</span>
+						</label>
+						<div class="col-lg-8">
+							<input type="password" class="form-control" name="password"
+								id="password">
 						</div>
 					</div>
-					<div >
-						<input type="checkbox" name="remember" class="form-control"> Nhớ tôi
-						<a href="reset-password.jsp">Quên mật khẩu?</a> 
-										
+					<div class="row">
+						<div class="col-lg-8 col-md-offset-4 padding-left-0">
+							<a href="page-forgotton-password.html">Forget Password?</a>
+						</div>
 					</div>
-					<div >
-						<input type="submit" value="Đăng nhập" >
+					<div class="row">
+						<div
+							class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
+							<button type="submit" class="btn btn-primary">Login</button>
+						</div>
+					</div>
+					<div class="row">
+						<div
+							class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-10 padding-right-30">
+							<hr>
+							<div class="login-socio">
+								<p class="text-muted">or login using:</p>
+								<ul class="social-icons">
+									<li><a href="#" data-original-title="facebook"
+										class="facebook" title="facebook"></a></li>
+									<li><a href="#" data-original-title="Twitter"
+										class="twitter" title="Twitter"></a></li>
+									<li><a href="#" data-original-title="Google Plus"
+										class="googleplus" title="Google Plus"></a></li>
+									<li><a href="#" data-original-title="Linkedin"
+										class="linkedin" title="LinkedIn"></a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>
+			<div class="col-md-4 col-sm-4 pull-right">
+				<div class="form-info">
+					<h2>
+						<em>Important</em> Information
+					</h2>
+					<p>Duis autem vel eum iriure at dolor vulputate velit esse vel
+						molestie at dolore.</p>
+
+					<button type="button" class="btn btn-default">More details</button>
+				</div>
+			</div>
 		</div>
 	</div>
-</body>
-</html>
+</div>
+<!-- END CONTENT -->
