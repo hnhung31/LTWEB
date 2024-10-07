@@ -1,5 +1,5 @@
 <sitemesh>
 	<mapping path="/*" name="web" decorator="web.jsp" />
-	<mapping path="/admin/*" name="admin" decorator="admin.jsp" />
+	<mapping path="/*admin/*" name="admin" decorator="admin.jsp" />
 	<mapping path="/v1/api*" exclude="true" />
 </sitemesh>

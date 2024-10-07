@@ -7,18 +7,7 @@
 <title>File Upload Demo</title>
 </head>
 <body>
-	<!-- <form method="post" action="${pageContext.request.contextPath }/multiPartServlet" enctype="multipart/form-data">
-	<div>Fullname</div>
-	<input type="text" name = "fullname" size="100" />
-	<input type="submit" value="Upload"/>
-	</form>
-	
-	</br>
-	<form method="post" action="${pageContext.request.contextPath }/multiPartServlet" enctype="multipart/form-data">
-	<div>Phone</div>
-	<input type="text" name = "phone" size="100" />
-	<input type="submit" value="Upload"/>
-	</form> -->
+
 
 	</br>
 	<div>Servlet Multipart</div>
