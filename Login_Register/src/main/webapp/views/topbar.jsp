@@ -231,29 +231,30 @@
 			</div>
 			<!-- END SIDEBAR -->
 			<!-- BEGIN CONTENT -->
-			<div class="col-md-9 col-sm-8">
-				<div style="height: 300px ; overflow-y: auto ; border: 1px solid #ccc;">
+			<div style="height: 300px ; overflow-y: auto ; border: 1px solid #ccc;">
 				<table border="1" , width=100%>
 						<tr>
 							<th>STT</th>
 							<th>Images</th>
 							<th>CategoryName</th>
-
 						</tr>
 						<c:forEach items="${listcate}" var="cate" varStatus="STT">
-							<tr>
-								<td>${STT.index+1 }</td>
-
-								<td><c:if test="${cate.images.substring(0,5)  != 'https'}">
-										<c:url value="/image?fname=${cate.images}" var="imgUrl"></c:url>
-									</c:if> <c:if test="${cate.images.substring(0,5)  == 'https'}">
-										<c:url value="${cate.images}" var="imgUrl"></c:url>
-									</c:if> <img height="150" width="200" src="${imgUrl}" /></td>
-								<td>${cate.categoryname }</td>
-
-							</tr>
+							<tr >
+						<td>${STT.index+1 }</td>
+						<td>${cate.categoryid}</td>
+						<td>
+						<c:url value="/image?fname=${cate.images}" var="imgUrl"></c:url>
+						
+						<c:if test = "${cate.images.substring(0,5)  == 'https'}">
+						<c:url value="${cate.images}" var="imgUrl"></c:url>
+						</c:if>
+						<img height="150" width="200" src="${imgUrl}" />
+						</td>
+						<td>${cate.categoryname }</td>
+						<td>${cate.active ? "Hoạt động" : "Khóa"}</td>
+						<td>
+						</tr>
 						</c:forEach>
-
 					</table>
 				</div>
 				<div class="owl-carousel owl-carousel3">

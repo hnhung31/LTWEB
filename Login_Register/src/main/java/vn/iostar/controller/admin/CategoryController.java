@@ -19,7 +19,7 @@ import static vn.iostar.utils.Constant.*;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, 
 maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
-@WebServlet(urlPatterns = {"/admin/categories","/admin/category/insert","/admin/category/update"})
+@WebServlet(urlPatterns = {"/admin/categories","/admin/category/insert","/admin/category/update","/admin/category/delete"})
 public class CategoryController extends HttpServlet {
 
 	public ICategoryServices cateService = new CategoryServicesImpl();
@@ -38,6 +38,10 @@ public class CategoryController extends HttpServlet {
 			CategoryModel category = cateService.findById(id);
 			req.setAttribute("cate", category);
 			req.getRequestDispatcher("/views/admin/category-update.jsp").forward(req, resp);
+		}else if (url.contains("delete")) {
+			String id = req.getParameter("id");
+			cateService.delete(Integer.parseInt(id));
+			resp.sendRedirect(req.getContextPath() + "/admin/categories");
 		}
 	}
 	@Override
