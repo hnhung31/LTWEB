@@ -3,8 +3,11 @@ package vn.iostar.entity;
 import java.io.Serializable;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "videos")
 @NamedQuery(name = "Video.findAll", query = "SELECT v FROM Video v")
@@ -14,26 +17,20 @@ public class Video implements Serializable {
 	@Id
 	@Column(name = "videoId")
 	private String videoId;
-
 	@Column(name = "active")
 	private boolean active;
-
-	@Column(name = "description", columnDefinition = "NVARCHAR(MAX) NULL")
+	@Column(name = "description", columnDefinition = "NVARCHAR(500) NULL")
 	private String description;
-
-	@Column(name = "poster", columnDefinition = "NVARCHAR(255) NULL")
+	@Column(name = "poster", columnDefinition = "NVARCHAR(500) NULL")
 	private String poster;
-
-	@Column(name = "title", columnDefinition = "NVARCHAR(255) NULL")
+	@Column(name = "title", columnDefinition = "NVARCHAR(500) NULL")
 	private String title;
-
 	@Column(name = "views")
 	private int views;
 
 	// bi-directional many-to-one association to Category
-
 	@ManyToOne
-	@JoinColumn(name = "categoryId")
+	@JoinColumn(name = "categoryId") //truong database
 	private Category categories;
 
 	public Video() {

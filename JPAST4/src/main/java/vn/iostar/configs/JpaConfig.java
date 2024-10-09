@@ -1,9 +1,7 @@
 package vn.iostar.configs;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.*;
+
 
 @PersistenceContext
 public class JpaConfig {
@@ -13,5 +11,27 @@ public class JpaConfig {
 
 		return factory.createEntityManager();
 
+	}
+	public static void main(String[] args) {
+		EntityManager enma =getEntityManager();
+		EntityTransaction trans = enma.getTransaction();
+
+		 try {
+
+		 trans.begin();
+
+		 trans.commit();
+
+		 } catch (Exception e) {
+
+		 e.printStackTrace();
+
+		 trans.rollback();
+
+		 throw e;
+
+		 }finally {
+		 enma.close();
+		 }
 	}
 }
